@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,99 +29,128 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple.shade900),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Colors.deepPurple.shade900),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Приложение)'),
+      home: const MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
+      backgroundColor: Colors.grey.shade400,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+              backgroundColor: Colors.cyan.shade100,
+              expandedHeight: 350,
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                  titlePadding: const EdgeInsets.only(top: 0),
+                  collapseMode: CollapseMode.pin,
+                  centerTitle: true,
+                  title: const Text('Новости',
+                      style: TextStyle(
+                        color: Colors.black,
+                      )),
+                  background: Column(children: [
+                    Padding(
+                        padding: const EdgeInsets.all(16).copyWith(top: 50),
+                        child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(40),
+                                color: Colors.black),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10, horizontal: 30),
+                                      child: Text(
+                                        '04\n04',
+                                        style: GoogleFonts.agbalumo(
+                                          color: Colors.white,
+                                          fontSize: 50,
+                                        ),
+                                      )),
+                                  Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.white24,
+                                          borderRadius:
+                                              BorderRadius.circular(16)),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(16),
+                                        child: Text(
+                                          'Предзащита проектов',
+                                          style: GoogleFonts.oswald(
+                                              color: Colors.white,
+                                              fontSize: 25),
+                                        ),
+                                      )),
+                                ],
+                              ),
+                            ))),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            minimumSize: const Size(double.infinity, 50),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16))),
+                        onPressed: () {},
+                        child: const Text(
+                          'Анонсы',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                    )
+                  ]))),
+          SliverList.builder(
+            itemBuilder: (context, index) => Padding(padding: const EdgeInsets.symmetric(vertical: 5), child: Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(16)),
+                child: Column(
 
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Colors.deepOrange,//Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.network('https://sun9-73.userapi.com/impg/-u3yw1hanqsEz471EVWhkwfDvhOKR9zGbQeodA/tyKnqXDo9tE.jpg?size=538x807&quality=95&sign=f35124468f654cfcfbf6b4d9918e9394&c_uniq_tag=GR2C_V8OX13hg7DRyOxYeWOKWZCons3LuWycdedXeKo&type=album',
+                      ),
+                    ),
+                    const SizedBox(height: 20,),
+
+                    const Text('''🏫В Центре образования «Кудрово» успешно завершился муниципальный этап региональной олимпиады школьников по политехнической олимпиаде. Это ежегодное соревнование стало отличной возможностью для старшеклассников проявить свои знания и навыки в четырех общеобразовательных предметах - математика, физика, информатика и химия.
+
+🏫Санкт-Петербургский политехнический университет Петра Великого, организатор этого знакового события, является одним из передовых образовательных учреждений России. Его отличная репутация и престижный статус делают учебу в этом университете мечтой для многих школьников. Участие в политехнической олимпиаде становится уникальной возможностью погрузиться в атмосферу вуза, оценить его потенциал и уровень образования.
+
+🏆Наши герои – ПРИЗЕРЫ олимпиады, ученики 10 и 11 классов, Кривцов Дмитрий (класс 10.1) и Воробьев Антон (класс 11.1), достойно проявили себя и заняли почетные призовые места! 
+Успех ребят в олимпиаде является примером для всех учащихся, показывая, что труд и усердие не остаются незамеченными. Их усердие, умение справляться со сложными заданиями и стремление к знаниям помогли им обогнать более 40 участников. Мы гордимся нашими яркими и талантливыми учениками!
+
+🌠От лица коллектива школы выражаем благодарность учителю, подготовившему наших призеров, Ирине Валерьевне Копыловой. Ее профессионализм, терпение и поддержка помогли ребятам добиться выдающихся результатов. Желаем побед и новых профессиональных достижений в трудной и благородной работе!
+
+Не ограничивайтесь одним успехом - участвуйте в олимпиадах, развивайтесь и стремитесь к новым вершинам! Станьте вдохновением для других школьников, чтобы они тоже стали участниками мероприятий такого масштаба, как Политехническая олимпиада.
+
+🌠Поздравляем еще раз наших победителей и благодарим всех участников, учителей и организаторов олимпиады за яркое мероприятие и возможность проявить себя. 
+
+Пожелаем всем участникам дальнейших успехов, новых побед и вдохновения в учебе и научных исследованиях!'''),
+                  ],
+                ))),
+            itemCount: 50,
+          ),
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              '132121321321',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
