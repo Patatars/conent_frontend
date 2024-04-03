@@ -9,15 +9,19 @@ class CustomSliverAppBar extends StatelessWidget {
     required this.backgroundColor,
   });
 
-  final Widget title;
+  final Text title;
   final Widget background;
   final double expandedHeight;
   final Color backgroundColor;
 
+
   @override
   Widget build(BuildContext context) {
-    Theme.of(context);
     return SliverAppBar(
+        shape: const ContinuousRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16))),
         backgroundColor: backgroundColor,
         expandedHeight: expandedHeight,
         pinned: true,

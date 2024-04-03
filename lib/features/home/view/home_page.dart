@@ -1,15 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:connent_frontend/roter/router.dart';
+import 'package:connent_frontend/router/router.dart';
 import 'package:flutter/material.dart';
-
 
 @RoutePage()
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
   });
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +18,8 @@ class HomePage extends StatelessWidget {
           final tabsRouter = AutoTabsRouter.of(context);
           return Scaffold(
             backgroundColor: theme.scaffoldBackgroundColor,
+            floatingActionButton:
+                tabsRouter.current.meta['floatingActionButton'],
             body: child,
             bottomNavigationBar: BottomNavigationBar(
               backgroundColor: theme.secondaryHeaderColor,
@@ -38,10 +37,10 @@ class HomePage extends StatelessWidget {
                   icon: Icon(Icons.book),
                   label: 'Мои проекты',
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: 'Профиль',
-                ),
+                // BottomNavigationBarItem(
+                //   icon: Icon(Icons.person),
+                //   label: 'Профиль',
+                // ),
               ],
             ),
           );

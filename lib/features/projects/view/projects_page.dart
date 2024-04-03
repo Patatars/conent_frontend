@@ -14,7 +14,7 @@ class ProjectsPage extends StatelessWidget {
         CustomSliverAppBar(
           backgroundColor: theme.primaryColor,
             expandedHeight: 200,
-            title: const Text('Ваши проекты\n'),
+            title: Text('Ваши проекты\n', style: theme.textTheme.titleLarge?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
             background: Container(
                 color: theme.scaffoldBackgroundColor,
                 child: Container(

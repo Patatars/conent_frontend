@@ -1,5 +1,6 @@
-import 'package:connent_frontend/roter/router.dart';
+import 'package:connent_frontend/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'features/home/home.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Conent',
       theme: ThemeData(
-        textTheme: const TextTheme(),
+        textTheme: GoogleFonts.golosTextTextTheme(),
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF004789)),
         scaffoldBackgroundColor: Colors.grey.shade400,
         useMaterial3: true,
