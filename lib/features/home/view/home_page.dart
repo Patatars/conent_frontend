@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
 
     return AutoTabsRouter(
-        routes: const [NewsRoute(), ProjectsRoute()],
+        routes: const [NewsRoute(), ProjectsRoute(), ProfileRoute()],
         builder: (context, child) {
           final tabsRouter = AutoTabsRouter.of(context);
           return Scaffold(
@@ -37,10 +37,10 @@ class HomePage extends StatelessWidget {
                   icon: Icon(Icons.book),
                   label: 'Мои проекты',
                 ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.person),
-                //   label: 'Профиль',
-                // ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person),
+                  label: 'Профиль',
+                ),
               ],
             ),
           );

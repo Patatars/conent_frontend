@@ -5,7 +5,6 @@ class DayEventWidget extends StatelessWidget {
   const DayEventWidget({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,7 +32,7 @@ class DayEventWidget extends StatelessWidget {
                           color: Colors.white24,
                           borderRadius: BorderRadius.circular(16)),
                       child: Padding(
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
                         child: Text(
                           'Предзащита проектов',
                           style: GoogleFonts.oswald(

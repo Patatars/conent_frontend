@@ -1,5 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+
+import '../methods/methods.dart';
 
 class ProjectsAddButton extends StatelessWidget {
   const ProjectsAddButton({
@@ -8,11 +9,8 @@ class ProjectsAddButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final router = AutoRouter.of(context);
     return FloatingActionButton(
-      onPressed: () {
-        router.pushNamed('/addProject');
-      },
+      onPressed: () => openAddProjectDialog(context),
       child: const Icon(Icons.add),
     );
   }

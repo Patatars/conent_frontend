@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import '../features/profile/profile.dart';
 import '../features/projects/widgets/widgets.dart';
 
 import '../features/home/home.dart';
@@ -19,8 +20,12 @@ class AppRouter extends _$AppRouter {
           AutoRoute(
               page: ProjectsRoute.page,
               path: 'projects',
-              meta: const {'floatingActionButton': ProjectsAddButton()})
+              meta: const {'floatingActionButton': ProjectsAddButton()}),
+          AutoRoute(
+            page: ProfileRoute.page,
+            path: 'profile'
+          )
         ]),
-    AutoRoute(page: AddProjectRoute.page, path: '/addProject')
+        AutoRoute(page: AddProjectRoute.page, path: '/addProject')
       ];
 }

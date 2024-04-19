@@ -5,20 +5,23 @@ class ProjectContainer extends StatelessWidget {
     super.key,
     required this.title,
     required this.subtitile, this.widget,
+    required this.backgroundColor,
+    required this.textStyle,
   });
 
   final String title;
   final String subtitile;
 
   final Widget? widget;
+  final Color backgroundColor;
+  final TextStyle textStyle;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Container(
       width: double.infinity,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16), color: theme.primaryColor),
+            borderRadius: BorderRadius.circular(16), color: backgroundColor),
         child: Column(
           children: [
             const SizedBox(
@@ -26,16 +29,19 @@ class ProjectContainer extends StatelessWidget {
             ),
             Text(
               title,
-              style: theme.textTheme.titleLarge?.copyWith(color: Colors.white),
+              style: textStyle,
             ),
-            const SizedBox(
-              height: 10,
-            ),
+
             Text(
+              textAlign: TextAlign.center,
               subtitile,
-              style: theme.textTheme.titleSmall?.copyWith(color: Colors.white),
+              style: textStyle.copyWith(fontSize: textStyle.fontSize!-3),
             ),
-            widget ?? const SizedBox(height: 10,)
+            widget != null ? Padding(
+              padding: const EdgeInsets.all(8.0).add(EdgeInsets.only(top: 10)),
+              child: widget,
+            ) : const SizedBox(height: 10,),
+
           ],
         ));
   }
