@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class DayEventWidget extends StatelessWidget {
   const DayEventWidget({
@@ -7,6 +6,7 @@ class DayEventWidget extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Padding(
         padding: const EdgeInsets.all(16).copyWith(top: 50),
         child: Container(
@@ -15,17 +15,15 @@ class DayEventWidget extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
                       padding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 30),
                       child: Text(
-                        '04\n04',
-                        style: GoogleFonts.agbalumo(
-                          color: Colors.white,
-                          fontSize: 50,
-                        ),
+                        textAlign: TextAlign.center,
+                        '27\n04',
+                        style: theme.textTheme.titleLarge,
                       )),
                   Container(
                       decoration: BoxDecoration(
@@ -34,9 +32,9 @@ class DayEventWidget extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(16),
                         child: Text(
-                          'Предзащита проектов',
-                          style: GoogleFonts.oswald(
-                              color: Colors.white, fontSize: 25),
+                          softWrap: true,
+                          'День науки',
+                          style: theme.textTheme.titleMedium,
                         ),
                       )),
                 ],

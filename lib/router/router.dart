@@ -4,6 +4,7 @@ import '../features/projects/widgets/widgets.dart';
 
 import '../features/home/home.dart';
 import '../features/news/news.dart';
+import '../features/announcements/announcements.dart';
 import '../features/projects/projects.dart';
 
 part 'router.gr.dart';
@@ -21,11 +22,9 @@ class AppRouter extends _$AppRouter {
               page: ProjectsRoute.page,
               path: 'projects',
               meta: const {'floatingActionButton': ProjectsAddButton()}),
-          AutoRoute(
-            page: ProfileRoute.page,
-            path: 'profile'
-          )
+          AutoRoute(page: ProfileRoute.page, path: 'profile')
         ]),
-        AutoRoute(page: AddProjectRoute.page, path: '/addProject')
+        AutoRoute(page: AddProjectRoute.page, path: '/addProject'),
+        AutoRoute(page: AnnouncementsRoute.page, path: '/announcements')
       ];
 }

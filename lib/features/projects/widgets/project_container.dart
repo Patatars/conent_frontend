@@ -38,7 +38,7 @@ class ProjectContainer extends StatelessWidget {
               style: textStyle.copyWith(fontSize: textStyle.fontSize!-3),
             ),
             widget != null ? Padding(
-              padding: const EdgeInsets.all(8.0).add(EdgeInsets.only(top: 10)),
+              padding: const EdgeInsets.all(8.0).add(const EdgeInsets.only(top: 10)),
               child: widget,
             ) : const SizedBox(height: 10,),
 

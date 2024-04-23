@@ -8,6 +8,6 @@ void openAddProjectDialog(BuildContext context) {
       context: context,
       backgroundColor: theme.dialogBackgroundColor,
       builder: (context) {
-        return AddProjectPage();
+        return const AddProjectPage();
       });
 }

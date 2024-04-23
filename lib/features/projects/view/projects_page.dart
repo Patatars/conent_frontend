@@ -1,7 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:connent_frontend/features/projects/methods/methods.dart';
 import 'package:connent_frontend/ui/ui.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -23,7 +22,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
         CustomSliverAppBar(
             backgroundColor: Colors.black,
             expandedHeight: 200,
-            title: Padding(
+            flexibleTitle: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text('Ваши проекты',
                   style: theme.textTheme.titleLarge?.copyWith(
@@ -70,12 +69,12 @@ class _ProjectsPageState extends State<ProjectsPage> {
                       ));
                 },
               ),
-        SliverToBoxAdapter(child: ElevatedButton(child: Text('+ проект'), onPressed: () {
+        SliverToBoxAdapter(child: ElevatedButton(child: const Text('+ проект'), onPressed: () {
           setState(() {
             projectCount++;
           });
         },),),
-        projectCount > 0 ? SliverToBoxAdapter(child: ElevatedButton(child: Text('- проект'), onPressed: () {
+        projectCount > 0 ? SliverToBoxAdapter(child: ElevatedButton(child: const Text('- проект'), onPressed: () {
           setState(() {
             projectCount--;
           });

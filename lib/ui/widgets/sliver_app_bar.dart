@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
+
+
   const CustomSliverAppBar({
     super.key,
-    required this.title,
+    this.flexibleTitle,
     this.background,
-    this.expandedHeight = 360,
-    required this.backgroundColor,
+    this.expandedHeight,
+    this.backgroundColor,
     this.collapseMode =  CollapseMode.pin,
-    this.stretchModes = const [],
+    this.stretchModes = const [], this.actions, this.title, this.bottom, this.collapsedHeight,
   });
 
-  final Widget title;
+  final Widget? flexibleTitle;
   final Widget? background;
-  final double expandedHeight;
-  final Color backgroundColor;
+  final double? expandedHeight;
+  final Color? backgroundColor;
   final CollapseMode collapseMode;
   final List<StretchMode> stretchModes;
+  final List<Widget>? actions;
+  final Widget? title;
+  final PreferredSize? bottom;
+  final double? collapsedHeight;
 
 
   @override
@@ -30,8 +36,12 @@ class CustomSliverAppBar extends StatelessWidget {
         shadowColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         expandedHeight: expandedHeight,
+        collapsedHeight: collapsedHeight,
+        bottom: bottom,
         pinned: true,
-        flexibleSpace:
+        title: title,
+        actions: actions,
+        flexibleSpace: flexibleTitle == null && background == null ? null :
              FlexibleSpaceBar(
                titlePadding: EdgeInsets.zero,
                 collapseMode: collapseMode,
@@ -39,7 +49,7 @@ class CustomSliverAppBar extends StatelessWidget {
                 stretchModes: stretchModes,
                 title: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: title,
+                  child: flexibleTitle,
                 ),
                 background: background
              ),

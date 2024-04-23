@@ -1,4 +1,6 @@
-import 'package:auto_route/annotations.dart';
+import 'dart:math';
+
+import 'package:auto_route/auto_route.dart';
 
 import '../../../ui/ui.dart';
 import '../widgets/widgets.dart';
@@ -13,21 +15,28 @@ class NewsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final router = AutoRouter.of(context);
     return CustomScrollView(
       slivers: [
         CustomSliverAppBar(
+          expandedHeight: 300,
           backgroundColor: theme.secondaryHeaderColor,
-          title: Text('Новости',
+          flexibleTitle: Text('Новости',
               style: theme.textTheme.titleLarge?.copyWith(color: Colors.black)),
           background: Container(
             color: theme.colorScheme.primaryContainer,
-            child: const Column(
-              children: [DayEventWidget(), LongButtonWidget()],
+            child: Column(
+              children: [const DayEventWidget(), LongButtonWidget(onPressed: () {
+                router.pushNamed("/announcements");
+              }),],
             ),
           ),
         ),
         SliverList.builder(
           itemBuilder: (context, index) => NewsWidget(
+            authorsName: Text('Автор', style: theme.textTheme.titleMedium?.copyWith(color: Colors.black),),
+            avatar: CircleAvatar(backgroundColor: Colors
+                .primaries[Random().nextInt(Colors.primaries.length)],),
             text:
                 '''📆В последний день весенних каникул учителя старшей школы имели возможность снять эмоциональное напряжение и морально подготовиться к завершению учебного года. Для педагогов были организованы следующие площадки:
 

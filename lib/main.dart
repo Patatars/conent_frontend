@@ -16,11 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final titleText =
-        GoogleFonts.onest(fontWeight: FontWeight.w800, fontSize: 30);
+        GoogleFonts.onest(fontWeight: FontWeight.w800, fontSize: 30, color: Colors.white);
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'Conent',
       theme: ThemeData(
-
         listTileTheme: const ListTileThemeData(
           shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.all(
@@ -32,8 +32,8 @@ class MyApp extends StatelessWidget {
 
         ),
         textTheme: GoogleFonts.unboundedTextTheme().merge(TextTheme(
-          titleMedium: titleText,
-          titleSmall: titleText,
+          titleSmall: titleText.copyWith(fontSize: 20),
+          titleMedium: titleText.copyWith(fontSize: 25),
           titleLarge: titleText,
         )),
         colorScheme: ColorScheme.fromSeed(
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xFF0086FF),
         scaffoldBackgroundColor: const Color(0xFFB5C7D8),
         useMaterial3: true,
-        dialogBackgroundColor: const Color(0xFFC4CBD5),
+        dialogBackgroundColor: const Color(0xFFFFD1F0),
       ),
       routerConfig: _appRouter.config(),
     );

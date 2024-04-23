@@ -2,10 +2,13 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
+import '../../../ui/ui.dart';
 import '../widgets/widgets.dart';
 
 @RoutePage()
 class AddProjectPage extends StatelessWidget {
+  const AddProjectPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     const double padding = 20;
@@ -23,7 +26,7 @@ class AddProjectPage extends StatelessWidget {
                     theme.textTheme.bodyLarge!.copyWith(color: Colors.white),
                 title: 'Присоединиться к проекту',
                 subtitile: 'как участник',
-                widget: ProjectTextField(onEditingComplete: ()=>print('132'),),
+                widget: ProjectTextField(onEditingComplete: ()=>print('132'), hint: 'Код проекта'),
                 backgroundColor: Colors.black,
               ),
               const SizedBox(

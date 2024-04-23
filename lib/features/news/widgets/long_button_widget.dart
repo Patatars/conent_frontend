@@ -4,7 +4,10 @@ class LongButtonWidget extends StatelessWidget {
   const LongButtonWidget({
     super.key,
     this.height = 50,
+    required this.onPressed,
   });
+
+  final Function() onPressed;
 
   final double height;
   @override
@@ -18,7 +21,7 @@ class LongButtonWidget extends StatelessWidget {
             minimumSize: Size(double.infinity, height),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16))),
-        onPressed: () {},
+        onPressed: onPressed,
         child: const Text(
           'Анонсы',
           style: TextStyle(color: Colors.white, fontSize: 20),
