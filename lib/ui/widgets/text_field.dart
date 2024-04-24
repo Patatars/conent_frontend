@@ -5,13 +5,15 @@ class ProjectTextField extends StatelessWidget {
 
 
   const ProjectTextField({
-    super.key, required this.onEditingComplete, this.suffixIcon, this.hint, this.textColor=Colors.white
+    super.key, this.onEditingComplete, this.suffixIcon, this.hint, this.textColor=Colors.white, this.hintOpacity=0.8, this.textFieldColor
   });
 
-  final Function onEditingComplete;
+  final Function? onEditingComplete;
   final Widget? suffixIcon;
   final String? hint;
   final Color textColor;
+  final double hintOpacity;
+  final Color? textFieldColor;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class ProjectTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
       child: Container(
         decoration: BoxDecoration(
-          color: theme.highlightColor.withOpacity(0.3),
+          color: textFieldColor ?? theme.highlightColor.withOpacity(hintOpacity),
           borderRadius: BorderRadius.circular(12),
         ),
         child: TextField(
@@ -31,7 +33,7 @@ class ProjectTextField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hint,
             suffixIcon: suffixIcon,
-            hintStyle: TextStyle(color: theme.highlightColor.withOpacity(0.8)),
+            hintStyle: TextStyle(color: theme.hintColor.withOpacity(hintOpacity)),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 12,
             ),

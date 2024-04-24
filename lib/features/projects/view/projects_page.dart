@@ -1,4 +1,5 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:connent_frontend/features/projects/methods/methods.dart';
 import 'package:connent_frontend/ui/ui.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,20 @@ class _ProjectsPageState extends State<ProjectsPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final router = AutoRouter.of(context);
     return CustomScrollView(
       slivers: [
         CustomSliverAppBar(
+          actions: [
+            IconButton(
+                onPressed: () {
+                  router.pushNamed('/chat');
+                },
+                icon: const Icon(
+                  Icons.message,
+                  size: 30,
+                ))
+          ],
             backgroundColor: Colors.black,
             expandedHeight: 200,
             flexibleTitle: Padding(

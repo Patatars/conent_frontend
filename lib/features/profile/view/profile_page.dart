@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:connent_frontend/ui/ui.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +14,19 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final router = AutoRouter.of(context);
     final List<Widget> slivers = [
       CustomSliverAppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                router.pushNamed('/chat');
+              },
+              icon: const Icon(
+                Icons.message,
+                size: 30,
+              ))
+        ],
         expandedHeight: 300,
         flexibleTitle: Text('Имя Фамилия',
             style: theme.textTheme.titleMedium
@@ -71,30 +83,6 @@ class ProfilePage extends StatelessWidget {
               itemCount: 5,
             ),
           ),
-        ),
-      ),
-      const SliverToBoxAdapter(
-        child: ListTile(
-          title: Text('У вас есть вопрос?'),
-          trailing: Icon(Icons.arrow_forward_ios),
-        ),
-      ),
-      const SliverToBoxAdapter(
-        child: ListTile(
-          title: Text('Ваша статистика'),
-          trailing: Icon(Icons.arrow_forward_ios),
-        ),
-      ),
-      const SliverToBoxAdapter(
-        child: ListTile(
-          title: Text('У вас есть вопрос?'),
-          trailing: Icon(Icons.arrow_forward_ios),
-        ),
-      ),
-      const SliverToBoxAdapter(
-        child: ListTile(
-          title: Text('Ваша статистика'),
-          trailing: Icon(Icons.arrow_forward_ios),
         ),
       ),
       const SliverToBoxAdapter(

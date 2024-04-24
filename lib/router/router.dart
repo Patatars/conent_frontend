@@ -3,6 +3,7 @@ import '../features/profile/profile.dart';
 import '../features/projects/widgets/widgets.dart';
 
 import '../features/home/home.dart';
+import '../features/chat/chat.dart';
 import '../features/news/news.dart';
 import '../features/announcements/announcements.dart';
 import '../features/projects/projects.dart';
@@ -25,6 +26,7 @@ class AppRouter extends _$AppRouter {
           AutoRoute(page: ProfileRoute.page, path: 'profile')
         ]),
         AutoRoute(page: AddProjectRoute.page, path: '/addProject'),
-        AutoRoute(page: AnnouncementsRoute.page, path: '/announcements')
+        AutoRoute(page: AnnouncementsRoute.page, path: '/announcements'),
+        AutoRoute(page: ChatRoute.page, path: '/chat')
       ];
 }

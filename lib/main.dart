@@ -17,10 +17,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final titleText =
         GoogleFonts.onest(fontWeight: FontWeight.w800, fontSize: 30, color: Colors.white);
+    final textTheme = GoogleFonts.unboundedTextTheme().merge(TextTheme(
+      titleSmall: titleText.copyWith(fontSize: 20),
+      titleMedium: titleText.copyWith(fontSize: 25),
+      titleLarge: titleText,
+    ));
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Conent',
       theme: ThemeData(
+        outlinedButtonTheme: OutlinedButtonThemeData(style: ButtonStyle(
+            side: const MaterialStatePropertyAll(
+                BorderSide(color: Colors.black, width: 3)),
+            shape: MaterialStatePropertyAll(
+              ContinuousRectangleBorder(
+                borderRadius: BorderRadius.circular(25),
+              ),
+            ),
+            textStyle: MaterialStatePropertyAll(
+                textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold))),),
         listTileTheme: const ListTileThemeData(
           shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.all(
@@ -31,11 +46,7 @@ class MyApp extends StatelessWidget {
           style: ListTileStyle.list,
 
         ),
-        textTheme: GoogleFonts.unboundedTextTheme().merge(TextTheme(
-          titleSmall: titleText.copyWith(fontSize: 20),
-          titleMedium: titleText.copyWith(fontSize: 25),
-          titleLarge: titleText,
-        )),
+        textTheme: textTheme,
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xFF0086FF),
         ),
