@@ -23,12 +23,22 @@ class _AddProjectPageState extends State<AddProjectPage> {
     currentPage = MainPage(
       createResume: () {
         setState(() {
-          currentPage = const CreateResume();
+          currentPage = CreateResume(
+            resumeCreated: () {
+              setState(() {
+                currentPage = const DoneWidget(imgPath: 'assets/application_sended.png', infoText: 'Резюме создано. Ищем для вас подходящие вакансии!');
+              });
+            },
+          );
         });
       },
       createProject: () {
         setState(() {
-          currentPage = const CreateProject();
+          currentPage = CreateProject(projectCreated: (){
+            setState(() {
+              currentPage =  const DoneWidget(imgPath: 'assets/application_sended.png', infoText: 'Проект создан!');
+            });
+          },);
         });
       },
     );
@@ -104,7 +114,11 @@ class MainPage extends StatelessWidget {
 }
 
 class CreateProject extends StatelessWidget {
-  const CreateProject({super.key});
+
+
+  const CreateProject({super.key, required this.projectCreated});
+
+  final Function() projectCreated;
 
   @override
   Widget build(BuildContext context) {
@@ -156,9 +170,7 @@ class CreateProject extends StatelessWidget {
               child: Text('Добавить доп.информацию'),
             ),
             ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed: projectCreated,
               child: const Text('Создать'),
             )
           ],
@@ -169,7 +181,11 @@ class CreateProject extends StatelessWidget {
 }
 
 class CreateResume extends StatelessWidget {
-  const CreateResume({super.key});
+
+
+  const CreateResume({super.key, required this.resumeCreated});
+
+  final Function() resumeCreated;
 
   @override
   Widget build(BuildContext context) {
@@ -187,14 +203,16 @@ class CreateResume extends StatelessWidget {
                         ?.copyWith(color: Colors.black),
                   ),
                   const ProjectTextField(
+                    textColor: Colors.black,
                     textFieldColor: Colors.white,
                     hint: 'ваше ФИО',
                   ),
                   const ProjectTextField(
+                    textColor: Colors.black,
                     textFieldColor: Colors.white,
                     hint: 'телефон',
                   ),
-                  const ProjectTextField(hint: 'email',textFieldColor: Colors.white,),
+                  const ProjectTextField(hint: 'email',textFieldColor: Colors.white,textColor: Colors.black,),
                   Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
@@ -206,12 +224,11 @@ class CreateResume extends StatelessWidget {
                           lastDate: DateTime.now(),
                           onDateChanged: (dateTime) {})),
                   const ProjectTextField(
+                    textColor: Colors.black,
                     hint: 'город проживания',
                     textFieldColor: Colors.white,
                   ),
-                  ElevatedButton(onPressed: () {
-                    Navigator.pop(context);
-                  }, child: const Text('Готово!'))
+                  ElevatedButton(onPressed: resumeCreated, child: const Text('Готово!'))
                 ],
                 separatorBuilder: (BuildContext context, int index) =>
                     const SizedBox(
